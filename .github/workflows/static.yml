@@ -19,11 +19,11 @@ jobs:
 
       - name: Install dependencies
         uses: actions/setup-node@v2
-      - run: npm install
+        run: npm install
 
       - name: Build the project
         uses: actions/setup-node@v2
-      - run: npm run build
+        run: npm run build
 
   # Deploy job
   deploy:
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Init new repo in dist folder and commit generated files
-      - run: |
+        run: |
           cd dist
           git init
           git add -A
