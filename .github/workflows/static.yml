@@ -6,26 +6,35 @@ on:
       - father
 
 jobs:
+  # Build job
   build:
-    environment:
-      name: develop
-      url: ${{ steps.deployment.outputs.page_url }}
+    # <Not provided for brevity>
+    # At a minimum this job should upload artifacts using actions/upload-pages-artifact
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+      - name: Install dependencies
+      - run: npm install
+      - name: Build the project
+      - run: npm run build
 
-      - name: Install
-        run: npm install
+  # Deploy job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
 
-      - name: Build
-        run: npm run build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
 
-      - name: Deploy to Github Pages
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v1
-        with:
-          branch: gh-pages
-          folder: dist
