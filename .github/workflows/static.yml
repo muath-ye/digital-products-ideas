@@ -18,11 +18,11 @@ jobs:
           persist-credentials: false
 
       - name: Install dependencies
-        uses: actions/setup-node@v2
+        # uses: actions/setup-node@v2
         run: npm install
 
       - name: Build the project
-        uses: actions/setup-node@v2
+        # uses: actions/setup-node@v2
         run: npm run build
 
   # Deploy job
