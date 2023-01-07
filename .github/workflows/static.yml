@@ -43,6 +43,8 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
+      - name: List directories
+        run: ls -a
       - name: Init new repo in dist folder and commit generated files
         run: |
           ls
