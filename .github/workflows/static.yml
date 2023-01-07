@@ -43,14 +43,13 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      - name: List directories
-        run: ls -a
+      - name: Init project
+        run: git init
+      - name: Add project
+        run: git add .
+      - name: Config email project
+        run: git config --local user.email "muathye@gmail.com"
+      - name: Config name project
+        run: git config --local user.name "muathye@gmail.com"
       - name: Init new repo in dist folder and commit generated files
-        run: |
-          ls
-          cd dist
-          git init
-          git add -A
-          git config --local user.email "muathye@gmail.com"
-          git config --local user.name "GitHub Action"
-          git commit -m 'deploy'
+        run: git commit -m 'deploy'
