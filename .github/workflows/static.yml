@@ -48,6 +48,6 @@ jobs:
         cd docs/.vuepress/dist
         git init
         git add -A
-        git config --local user.email "action@github.com"
+        git config --local user.email "muathye@gmail.com"
         git config --local user.name "GitHub Action"
         git commit -m 'deploy'
