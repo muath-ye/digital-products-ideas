@@ -45,6 +45,7 @@ jobs:
     steps:
       - name: Init new repo in dist folder and commit generated files
         run: |
+          ls
           cd dist
           git init
           git add -A
