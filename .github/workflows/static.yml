@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Init new repo in dist folder and commit generated files
-        run: |
+      - run: |
           cd dist
           git init
           git add -A
